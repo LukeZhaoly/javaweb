@@ -16,6 +16,9 @@ public class Login extends HttpServlet {
 		}
 		System.out.println(pass);
 		System.out.println("test");
+		PrintWriter out=response.getWriter();
+		out.println(user);
+		out.println(password);
 	}
 
 
