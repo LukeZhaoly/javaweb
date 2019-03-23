@@ -14,6 +14,9 @@ public class login extends HttpServlet {
 	
 		String user = req.getParameter("user");
 		String pass = req.getParameter("pass");
+		//获取web应用初始化的参数：user，password
+	 String inituser=getServletContext().getInitParameter("username");
+	 String initpassword = getServletContext().getInitParameter("password");
 		try{
 			System.out.println(new String(user.getBytes("ISO-8859-1"), "UTF-8"));
 		} catch(Exception e) {
@@ -22,7 +25,12 @@ public class login extends HttpServlet {
 		System.out.println(pass);
 		System.out.println("test");
 		PrintWriter out=resp.getWriter();
-	       out.print("user:"+user+"   "+"password:"+pass);
+	       out.print("user is:"+user+"   "+"password is:"+pass+"   ");
+		if(inituser.equals(user)&&initpassword.equals(pass)) {
+	 			out.print("hello:"+user);
+	 	 }else {
+	 			out.print("sorry:"+user);
+	 	}
 	}
 
 
