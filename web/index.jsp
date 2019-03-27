@@ -8,8 +8,8 @@
 		<center>
 		<div style="background-color:#ddd;padding:30;width:30%;margin-top:5em">
 			<form action="login" method="post">
-				用户： <input type="text" name="user"> <p>
-				密码： <input type="text" name="pass">  <p>
+				用户： <input type="text" name="username"> <p>
+				密码： <input type="text" name="password">  <p>
 				<input type="submit" value=" 登 录 ">
 			</form>
 		</div>
