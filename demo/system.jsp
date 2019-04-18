@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
 <head>
@@ -12,17 +13,22 @@
 <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="main.jsp" class="navbar-brand">后台管理</a></h1>
+            <h1 class="topbar-logo none"><a href="${pageContext.request.contextPath}/main.jsp" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="main.jsp">首页</a></li>
+                <li><a class="on" href="${pageContext.request.contextPath}/main.jsp">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="#">管理员</a></li>
-                <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
+               <c:if test="${!empty user}">
+					<li>${user.username}</li> 
+					<li><a href="#">修改密码</a></li>
+                	<li><a href="${pageContext.request.contextPath}/index.jsp">退出</a></li>
+               	</c:if>
+               	<c:if test="${empty user}">
+					<li><a href="${pageContext.request.contextPath}/index.jsp">登录</li> 
+               	</c:if>
             </ul>
         </div>
     </div>
@@ -37,17 +43,17 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="ArticlesServlet?method=queryAll"><i class="icon-font">&#xe008;</i>作品管理</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe006;</i>分类管理</a></li>
+                        <li><a href="ArticlesServlet?method=query"><i class="icon-font">&#xe008;</i>作品管理</a></li>
+                       
                         <li><a href="#"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe052;</i>友情链接</a></li>
+                        <li><a href="http://www.baidu.com/"><i class="icon-font">&#xe052;</i>友情链接</a></li>
                         <li><a href="#"><i class="icon-font">&#xe033;</i>广告管理</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
                     <ul class="sub-menu">
-                        <li><a href="system.jsp"><i class="icon-font">&#xe017;</i>系统设置</a></li>
+                        <li><a href="${pageContext.request.contextPath}/system.jsp"><i class="icon-font">&#xe017;</i>系统设置</a></li>
                         <li><a href="#"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
                         <li><a href="#"><i class="icon-font">&#xe046;</i>数据备份</a></li>
                         <li><a href="#"><i class="icon-font">&#xe045;</i>数据还原</a></li>
@@ -59,7 +65,7 @@
     <!--/sidebar-->
     <div class="main-wrap">
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="main.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">系统设置</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="${pageContext.request.contextPath}/main.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">系统设置</span></div>
         </div>
         <div class="result-wrap">
             <form action="#" method="post" id="myform" name="myform">

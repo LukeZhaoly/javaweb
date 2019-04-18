@@ -21,7 +21,7 @@
 						<div class="login_title">
 							注册
 						</div>
-						<form action="RegistServlet" method="post">
+						<form action="#" method="post">
 							
 							<div class="form_text_ipt">
 								<input name="username" type="text" placeholder="用户名">

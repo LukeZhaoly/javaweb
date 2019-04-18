@@ -20,7 +20,7 @@
 						<div class="login_title">
 							登录
 						</div>
-						<form action="LoginServlet" method="post">
+						<form action="${pageContext.request.contextPath}/UserServlet" method="post">
 							
 							<div class="form_text_ipt">
 								<input name="username" type="text" placeholder="用户名">
@@ -42,7 +42,7 @@
 								<button type="submit" onclick="javascript:window.location.href='#'">登录</button>
 							</div>
 							<div class="form_reg_btn">
-								<span>还没有帐号？</span><a href="register.jsp">马上注册</a>
+								<span>还没有帐号？</span><a href="${pageContext.request.contextPath}/register.jsp">马上注册</a>
 							</div>
 						</form>
 						<div class="other_login">
