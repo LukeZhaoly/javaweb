@@ -16,7 +16,7 @@
 <%
  	User user=(User)session.getAttribute("user");
  	if(user==null){
- 		session.invalidate();
+ 		//session.invalidate();
  		response.sendRedirect("index.jsp");
  	}
  %>

@@ -16,7 +16,7 @@
  <%
  	User user=(User)session.getAttribute("user");
  	if(user==null){
- 		session.invalidate();
+ 		//session.invalidate();
  		response.sendRedirect("index.jsp");
  	}
  %>
@@ -33,6 +33,7 @@
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
               	<c:if test="${!empty user}">
+              		<li><embed src=""></embed></li>
 					<li>${user.username}</li> 
 					<li><a href="#">修改密码</a></li>
                 	<li><a href="${pageContext.request.contextPath}/LoginOut.jsp">退出</a></li>

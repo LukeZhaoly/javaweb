@@ -38,6 +38,7 @@
 								<input name="password" type="password" placeholder="密码">
 							</div>
 							<div class="ececk_warning"><span>密码不能为空</span></div>
+						   
 							<div class="form_check_ipt">
 								<div class="left check_left">
 									<label><input name="" type="checkbox"> 下次自动登录</label>

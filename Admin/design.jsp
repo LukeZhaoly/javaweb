@@ -16,7 +16,7 @@
 <%
  	User user=(User)session.getAttribute("user");
  	if(user==null){
- 		session.invalidate();
+ 		//session.invalidate();
  		response.sendRedirect("index.jsp");
  	}
  %>
@@ -94,7 +94,7 @@
                             <th width="70">关键字:</th>
                            
 	                            <td><input class="common-text" placeholder="关键字" name="title2" value="" id="" type="text"></td>
-	                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit">(根据Title查询) </td>
+	                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
                 
                          
                         </tr>

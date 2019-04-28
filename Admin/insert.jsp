@@ -15,7 +15,7 @@
 <%
  	User user=(User)session.getAttribute("user");
  	if(user==null){
- 		session.invalidate();
+ 		//session.invalidate();
  		response.sendRedirect("index.jsp");
  	}
  %>
@@ -81,7 +81,7 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="add.do" method="post" >
+                <form action="add.do" method="post"  enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         
                         <tbody><tr>
@@ -104,11 +104,11 @@
                                 <td><input class="common-text" name="author" size="50" value="" type="text"></td>
                             </tr>
                             <tr>
-                            	<form action="${pageContext.request.contextPath}/UploadHeadleServlet" enctype="multipart/form-data" name="upload">
+                            	
 	                                <th><i class="require-red">*</i>文件：</th>
-	                               
+	                                <td><input name="file" id="" type="file">
 	                                <!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
-                           		</form>
+                           		
                             </tr>
                             <tr>
                                 <th>Comments：</th>

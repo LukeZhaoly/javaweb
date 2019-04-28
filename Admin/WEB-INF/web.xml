@@ -13,7 +13,7 @@
     <description></description>
     <display-name>ArticlesServlet</display-name>
     <servlet-name>ArticlesServlet</servlet-name>
-    <servlet-class>cn.edu.swu.Servlet.ArticlesServlet</servlet-class>
+    <servlet-class>cn.edu.swu.Servlet.ArticleServlet.ArticlesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ArticlesServlet</servlet-name>
@@ -23,10 +23,30 @@
     <description></description>
     <display-name>UserServlet</display-name>
     <servlet-name>UserServlet</servlet-name>
-    <servlet-class>cn.edu.swu.Servlet.UserServlet</servlet-class>
+    <servlet-class>cn.edu.swu.Servlet.UserLoginServlet.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ValidateColorServlet</display-name>
+    <servlet-name>ValidateColorServlet</servlet-name>
+    <servlet-class>cn.edu.swu.Servlet.UserLoginServlet.ValidateColorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateColorServlet</servlet-name>
+    <url-pattern>/ValidateColorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UploadServlet</display-name>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>cn.edu.swu.Servlet.ArticleServlet.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/UploadServlet</url-pattern>
   </servlet-mapping>
 </web-app>
