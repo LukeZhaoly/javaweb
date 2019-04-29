@@ -25,7 +25,7 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="main.jsp" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="main.jsp">首页</a></li>
+                <li><a class="on" href="${pageContext.request.contextPath}/main.jsp">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>

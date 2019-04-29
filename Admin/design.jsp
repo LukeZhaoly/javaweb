@@ -52,7 +52,7 @@
             <ul class="sidebar-list">
             
                 <li>
-                    <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
+                    <a href="${pageContext.request.contextPath}/main.jsp"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
                         <li><a href="query.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
                       
@@ -136,7 +136,7 @@
                             
                            <th class="tc" width="5%"><input class="allChoose" name="article" type="checkbox"></th>
                             <td><%=article.getID() %></td>
-                            <td><a target="_blank" href="#" ><%=article.getTitle() %></a>  </td>
+                            <td><a target="_blank" href="download.do?titlefile=<%=article.getTitle() %>" ><%=article.getTitle() %></a>  </td>
                             <td><%=article.getStatus() %></td>
                             <td><%=article.getClick() %></td>
                             <td><%=article.getPublisher() %></td>
