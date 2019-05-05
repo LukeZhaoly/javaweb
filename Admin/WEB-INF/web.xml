@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>Admin</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  <!--设置字符编码-->
+  <context-param>
+    <param-name>encoding</param-name>
+    <param-value>UTF-8</param-value>
+  </context-param>
+
+  <!--设置重定向文件-->
+  <context-param>
+    <param-name>redirectPage</param-name>
+    <param-value>/index.jsp</param-value>
+  </context-param>
+
+  <!--设置不需要检查 的页面-->
+  <context-param>
+    <param-name>uncheckUrls</param-name>
+    <param-value>/index.jsp,/error.jsp</param-value>
+  </context-param>
+
+  <!--配置sessionkey-->
+<context-param>
+    <param-name>sessionkey</param-name>
+    <param-value>usersessionkey</param-value>
+</context-param>
+
+
+  <!--相关文章的servlet-->
   <servlet>
     <description></description>
     <display-name>ArticlesServlet</display-name>
@@ -19,6 +36,8 @@
     <servlet-name>ArticlesServlet</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+
+  <!--用户相关servlet-->
   <servlet>
     <description></description>
     <display-name>UserServlet</display-name>
@@ -29,6 +48,8 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
+
+  <!--生成验证码的-->
   <servlet>
     <description></description>
     <display-name>ValidateColorServlet</display-name>
@@ -41,22 +62,24 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>UploadServlet</display-name>
-    <servlet-name>UploadServlet</servlet-name>
-    <servlet-class>cn.edu.swu.Servlet.ArticleServlet.UploadServlet</servlet-class>
+    <display-name>TestMoreDelete</display-name>
+    <servlet-name>TestMoreDelete</servlet-name>
+    <servlet-class>Test.TestMoreDelete</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UploadServlet</servlet-name>
-    <url-pattern>/UploadServlet</url-pattern>
+    <servlet-name>TestMoreDelete</servlet-name>
+    <url-pattern>/TestMoreDelete</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>downloadServlet</display-name>
-    <servlet-name>downloadServlet</servlet-name>
-    <servlet-class>Test.downloadServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>downloadServlet</servlet-name>
-    <url-pattern>/downloadServlet</url-pattern>
-  </servlet-mapping>
+
+  <!--登录的过滤器-->
+    <filter>
+        <display-name>LoginFilter</display-name>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>cn.edu.swu.Servlet.UserLoginServlet.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+ 
 </web-app>

@@ -12,13 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 </head>
 <body>
-<%
- 	User user=(User)session.getAttribute("user");
- 	if(user==null){
- 		//session.invalidate();
- 		response.sendRedirect("index.jsp");
- 	}
- %>
+
 <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">

@@ -13,13 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 </head>
 <body>
-<%
- 	User user=(User)session.getAttribute("user");
- 	if(user==null){
- 		//session.invalidate();
- 		response.sendRedirect("index.jsp");
- 	}
- %>
+
 <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">
@@ -103,11 +97,11 @@
             </div>
         </div>
         <div class="result-wrap">
-            <form action=query.do"  name="myform" id="myform" method="post">
+            <form action="query.do"  name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
                         <a href="insert.jsp"><i class="icon-font"></i>新增作品</a>
-                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                        <a id="batchDel" href="DeleteMoreAces.do" ><i class="icon-font"></i>批量删除</a>
                         <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
                     </div>
                 </div>
@@ -134,7 +128,7 @@
                         %>
                         <tr>
                             
-                           <th class="tc" width="5%"><input class="allChoose" name="article" type="checkbox"></th>
+                           <th class="tc" width="5%"> <input class="allChoose" name="ace" type="checkbox" value="<%=article.getID()%>"></th>
                             <td><%=article.getID() %></td>
                             <td><a target="_blank" href="download.do?titlefile=<%=article.getTitle() %>" ><%=article.getTitle() %></a>  </td>
                             <td><%=article.getStatus() %></td>

@@ -13,12 +13,7 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 </head>
 <body>
-<%
-	User user=(User)session.getAttribute("user");
-	if(user!=null){
-		response.sendRedirect("main.jsp");
-	}
-%>
+
 		<div class="wrap login_wrap">
 			<div class="content">
 				<div class="logo"></div>
