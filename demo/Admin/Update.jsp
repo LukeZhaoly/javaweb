@@ -27,7 +27,7 @@
             <ul class="top-info-list clearfix">
                <c:if test="${!empty user}">
 					<li>${user.username}</li> 
-					<li><a href="#">修改密码</a></li>
+					<li><a href="${pageContext.request.contextPath}/Admin/UserPwdUpdate.jsp">修改密码</a></li>
                 	<li><a href="${pageContext.request.contextPath}/Admin/LoginOut.jsp">退出</a></li>
                	</c:if>
                	<c:if test="${empty user}">
@@ -60,7 +60,7 @@
                     <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
                     <ul class="sub-menu">
                         <li><a href="${pageContext.request.contextPath}/Admin/system.jsp"><i class="icon-font">&#xe017;</i>系统设置</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Userquery.action"><i class="icon-font">&#xe037;</i>用户管理</a></li>
                         <li><a href="#"><i class="icon-font">&#xe046;</i>数据备份</a></li>
                         <li><a href="#"><i class="icon-font">&#xe045;</i>数据还原</a></li>
                     </ul>

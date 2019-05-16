@@ -34,7 +34,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/UserServlet</url-pattern>
+    <url-pattern>*.action</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -85,4 +85,5 @@
     <servlet-name>ExperienceServlet</servlet-name>
     <url-pattern>/ExperienceServlet</url-pattern>
   </servlet-mapping>
+
 </web-app>

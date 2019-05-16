@@ -23,7 +23,7 @@
 						<div class="login_title">
 							登录
 						</div>
-						<form action="${pageContext.request.contextPath }/UserServlet" method="post">
+						<form action="${pageContext.request.contextPath }/login.action" method="post">
 							
 							<div class="form_text_ipt">
 								<input name="username" type="text" placeholder="用户名">

@@ -75,7 +75,7 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="${pageContext.request.contextPath}/query.do" method="post">
+                <form action="${pageContext.request.contextPath}/Userquery.action" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择分类:</th>
@@ -87,7 +87,7 @@
                             </td>
                             <th width="70">关键字:</th>
                            
-	                            <td><input class="common-text" placeholder="关键字" name="title2" value="" id="" type="text"></td>
+	                            <td><input class="common-text" placeholder="关键字" name="username" value="" id="" type="text"></td>
 	                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
                 
                          
@@ -98,47 +98,35 @@
         </div>
         <div class="result-wrap">
             <form action="query.do"  name="myform" id="myform" method="post">
-                <div class="result-title">
-                    <div class="result-list">
-                        <a href="${pageContext.request.contextPath}/Admin/insert.jsp"><i class="icon-font"></i>新增作品</a>
-                        <a id="batchDel" href="DeleteMoreAces.do" ><i class="icon-font"></i>批量删除</a>
-                        <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
-                    </div>
-                </div>
+              
                 <div class="result-content">
 <%
-	List<Article> articles =(List<Article>)request.getAttribute("articles");
+	List<User> users=(List<User>)request.getAttribute("users");
 %>
                     <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="article" type="checkbox"></th>
                           
                             <th>ID</th>
-                            <th>Title</th>
-                            <th>status</th>
-                            <th>click</th>
-                            <th>Publisher</th>
-                            <th>UpdateTime</th>
-                            <th>Comments</th>
-                        	<th>Operation</th>
+                            <th>用户名</th>
+                            <th>电话</th>
+                            <th>管理操作</th>
+                           
                         </tr>
                         <%
-                        	if(articles!=null){
-                        		for(Article article:articles){
+                        	if(users!=null){
+                        		for(User user:users){
                         %>
                         <tr>
                             
-                           <th class="tc" width="5%"> <input class="allChoose" name="ace" type="checkbox" value="<%=article.getID()%>"></th>
-                            <td><%=article.getID() %></td>
-                            <td><a target="_blank" href="download.do?titlefile=<%=article.getTitle() %>" ><%=article.getTitle() %></a>  </td>
-                            <td><%=article.getStatus() %></td>
-                            <td><%=article.getClick() %></td>
-                            <td><%=article.getPublisher() %></td>
-                            <td><%=article.getUpdateTime() %></td>
-                            <td><%=article.getComments() %></td>
+                           <th class="tc" width="5%"> <input class="allChoose" name="ace" type="checkbox" value="<%=user.getUid()%>"></th>
+                            <td><%=user.getUid() %></td>
+                            <td><%=user.getUsername() %></td>
+                            <td><%=user.getPhone() %></td>
+                          
                             <td>
-                                <a class="link-update" href="${pageContext.request.contextPath}/edit.do?id=<%=article.getID()%>">修改</a>
-                                <a class="link-del" href="${pageContext.request.contextPath}/delete.do?ID=<%=article.getID()%>">删除</a>
+                               	<a class="link-del" href="${pageContext.request.contextPath}/UserAuthorityServlet?uid=<%=user.getUid()%>">权限管理</a>
+                                <a class="link-del" href="${pageContext.request.contextPath}/Userdelete.action?uid=<%=user.getUid()%>">删除</a>
                             </td>
                         </tr>
                         
