@@ -1,7 +1,10 @@
+<%@page import="java.util.Locale"%>
 <%@page import="org.eclipse.jdt.internal.compiler.batch.Main"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	
@@ -13,6 +16,20 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css" />
 </head>
 <body>
+<%
+	String encode=request.getParameter("encode");
+	if(encode!=null)
+		if("en".equals(encode)){
+			session.setAttribute("locale", Locale.US);
+		}else if("zh".equals(encode)){
+			session.setAttribute("locale", Locale.CHINA);
+		}
+%>
+
+	<c:if test="${sessionScope.locale != null }">
+		<fmt:setLocale value="${sessionScope.locale }"/>
+	</c:if>
+	<fmt:setBundle basename="MB" />
 
 		<div class="wrap login_wrap">
 			<div class="content">
@@ -21,52 +38,51 @@
 					
 					<div class="login_form">
 						<div class="login_title">
-							登录
+							<fmt:message key="login"></fmt:message>
 						</div>
 						<form action="${pageContext.request.contextPath }/login.action" method="post">
 							
 							<div class="form_text_ipt">
-								<input name="username" type="text" placeholder="用户名">
+								<input name="username" type="text" placeholder=<fmt:message key="username"/>>
 							</div>
-							<div class="ececk_warning"><span>用户名不能为空</span></div>
+							<div class="ececk_warning"><span><fmt:message key="login_u"></fmt:message></span></div>
+							
 							<div class="form_text_ipt">
-								<input name="password" type="password" placeholder="密码">
+								<input name="password" type="password" placeholder=<fmt:message key="password" />>
 							</div>
-							<div class="ececk_warning"><span>密码不能为空</span></div>
+							<div class="ececk_warning"><span><fmt:message key="login_p"></fmt:message> </span></div>
 						   
 							<div class="form_check_ipt">
 								<div class="left check_left">
-									<label><input name="" type="checkbox"> 下次自动登录</label>
+									<label><input name="" type="checkbox"><fmt:message key="auto_login"></fmt:message> </label>
 								</div>
 								<div class="right check_right">
-									<a href="#">忘记密码</a>
+									<a href="#"><fmt:message key="forget_p"/></a>
 								</div>
 							</div>
 							<div class="form_btn">
-								<button type="submit" onclick="javascript:window.location.href='#'">登录</button>
+								<button type="submit" onclick="javascript:window.location.href='#'"><fmt:message key="login" /></button>
 							</div>
 							<div class="form_reg_btn">
-								<span>还没有帐号？</span><a href="${pageContext.request.contextPath}/Admin/register.jsp">马上注册</a>
+								<span><fmt:message key="no_account"/></span><a href="${pageContext.request.contextPath}/Admin/register.jsp"><fmt:message key="regist"></fmt:message></a>
 							</div>
 						</form>
 						<div class="other_login">
-							<div class="left other_left">
-								<span>其它登录方式</span>
-							</div>
-							<div class="right other_right">
-								<a href="#"><i class="fa fa-qq fa-2x"></i></a>
-								<a href="#"><i class="fa fa-weixin fa-2x"></i></a>
-								<a href="#"><i class="fa fa-weibo fa-2x"></i></a>
-							</div>
+							
+								<a href="${pageContext.request.contextPath }/Admin/index.jsp?encode=zh">中文</a>|
+								<a href="${pageContext.request.contextPath }/Admin/index.jsp?encode=en">English</a>
+							
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/Ajquery.min.js" ></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/Acommon.js" ></script>
 		<div style="text-align:center;">
-<p>详情访问：<a href="https://www.baidu.com/" target="_blank">说明</a></p>
+<p><fmt:message key="more_info"></fmt:message><a href="https://www.baidu.com/" target="_blank"><fmt:message key="bd"></fmt:message></a></p>
 </div>
 	</body>
 </html>

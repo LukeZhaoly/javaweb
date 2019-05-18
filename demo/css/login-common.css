@@ -163,7 +163,7 @@ header{
 	width: 300px;
 	height: 80px;
 	line-height: 80px;
-	margin: 0px auto;
+	margin: auto auto;
 }
 .other_left{
 	font-size: 14px;
