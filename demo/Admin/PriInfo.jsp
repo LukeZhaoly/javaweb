@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="cn.edu.swu.domain.*"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -66,73 +67,51 @@
             </ul>
         </div>
     </div>
-    <!--/sidebar-->
+     <!--/sidebar-->
     <div class="main-wrap">
 
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i><a href="${pageContext.request.contextPath}/">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
         </div>
-        <div class="search-wrap">
-            <div class="search-content">
-                <form action="${pageContext.request.contextPath}/Userquery.action" method="post">
-                    <table class="search-tab">
-                        <tr>
-                            <th width="120">选择分类:</th>
-                            <td>
-                                <select name="search-sort" id="">
-                                    <option value="">全部</option>
-                                    <option value="19">编程学习</option><option value="20">精美短文</option>
-                                </select>
-                            </td>
-                            <th width="70">关键字:</th>
-                           
-	                            <td><input class="common-text" placeholder="名字" name="username" value="" id="" type="text"></td>
-	                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
-                
-                        </tr>
-                    </table>
-                </form>
-            </div>
-        </div>
-        <div class="result-wrap">
-           
-              
-                <div class="result-content">
-
-                    <table class="result-tab" width="100%">
-                        <tr>
-                            <th class="tc" width="5%"><input class="allChoose" name="article" type="checkbox"></th>
-                          
-                            <th>ID</th>
-                            <th>用户名</th>
-                            <th>电话</th>
-                            <th>管理操作</th>
-                           
-                        </tr>
-                        <c:forEach items="${pbList.beanList }" var="user">
-                        <tr>
-                            
-                           <th class="tc" width="5%"> <input class="allChoose" name="ace" type="checkbox" value="${user.uid }"></th>
-                            <td>${user.uid }</td>
-                            <td>${user.username }</td>
-                            <td>${user.phone }</td>
-                          
-                            <td>
-                               	<a class="link-del" href="${pageContext.request.contextPath}/getPrivileges.action?uid=${user.uid}">权限管理</a>
-                                <a class="link-del" href="${pageContext.request.contextPath}/Userdelete.action?uid=${user.uid}">删除</a>
-                            </td>
-                        </tr>
-                        </c:forEach>
-                    </table>
-                    <div class="list-page">
-                    	<!-- 分页实现 -->
-                    	<%@include file="/Admin/page.jsp" %>
-                    </div>
-                </div>
-           
-        </div>
     </div>
-    <!--/main-->
+  
+   <%
+   		User user=(User)request.getAttribute("userpri");
+   		List<Privilege> privileges=(List<Privilege>)request.getAttribute("privileges");
+   		List<Privilege> ups=user.getPrivileges();
+   		
+   		if(user!=null){		
+   	%>
+   <h3>	<%=user.getUsername() %>的权限是：</h3>
+   		<form action="updatePri.action?uid=<%=user.getUid() %>" method="post">
+   			<input type="hidden" name="username" value="<%=user.getUsername() %>">
+   			<%
+   				for(Privilege privilege:privileges){
+   					boolean flag=false;
+   					for(Privilege up:ups){
+   						if((up.getDesc()).equals(privilege.getDesc())){
+   								flag=true;			
+   						}
+   					}
+   					if(flag==true){
+   			%>
+			   			<input type="checkbox" name="privilege" value="<%=privilege.getId()%>" checked="checked"><%=privilege.getName()%><br><br>			 		
+			<%
+   					}else{	
+			%>		
+   					<input type="checkbox" name="privilege" value="<%=privilege.getId()%>" ><%=privilege.getName()%><br><br>
+   			<%
+   					
+   					}
+   				}
+   			%>
+   			<input type="submit" value="Update">
+   		</form>
+  	<% 		
+   		}
+    %>
+  
 </div>
+
 </body>
 </html>

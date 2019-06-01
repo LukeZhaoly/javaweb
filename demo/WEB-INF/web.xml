@@ -10,7 +10,7 @@
   </context-param>
   <context-param>
     <param-name>uncheckUrls</param-name>
-    <param-value>/Admin/index.jsp,/Admin/error.jsp</param-value>
+    <param-value>/Admin/index.jsp,/Admin/error.jsp,/Admin/UserPwdUpdate.jsp,/Admin/403.jsp,/Admin/LoginOut.jsp</param-value>
   </context-param>
   <context-param>
     <param-name>sessionkey</param-name>

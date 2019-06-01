@@ -47,7 +47,7 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/Admin/main.jsp"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="${pageContext.request.contextPath}/query.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/getPage.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
                       
                         
                         <li><a href="#"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>

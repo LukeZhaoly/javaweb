@@ -48,7 +48,7 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/Admin/main.jsp"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="query.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/getPage.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
                       
                         <li><a href="#"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
                         <li><a href="http://www.baidu.com/"><i class="icon-font">&#xe052;</i>友情链接</a></li>
@@ -59,7 +59,7 @@
                     <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
                     <ul class="sub-menu">
                         <li><a href="${pageContext.request.contextPath}/Admin/system.jsp"><i class="icon-font">&#xe017;</i>系统设置</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Userquery.action"><i class="icon-font">&#xe037;</i>用户管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/getPage.action"><i class="icon-font">&#xe037;</i>用户管理</a></li>
                         <li><a href="#"><i class="icon-font">&#xe046;</i>数据备份</a></li>
                         <li><a href="#"><i class="icon-font">&#xe045;</i>数据还原</a></li>
                     </ul>
@@ -106,10 +106,7 @@
                     </div>
                 </div>
                 <div class="result-content">
-<%
-	List<Article> articles =(List<Article>)request.getAttribute("articles");
-%>
-                    <table class="result-tab" width="100%">
+            <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="article" type="checkbox"></th>
                           
@@ -122,32 +119,25 @@
                             <th>Comments</th>
                         	<th>Operation</th>
                         </tr>
-                        <%
-                        	if(articles!=null){
-                        		for(Article article:articles){
-                        %>
+                       <c:forEach items="${pbList.beanList }" var="article">
                         <tr>
                             
-                           <th class="tc" width="5%"> <input class="allChoose" name="ace" type="checkbox" value="<%=article.getID()%>"></th>
-                            <td><%=article.getID() %></td>
-                            <td><a target="_blank" href="download.do?titlefile=<%=article.getTitle() %>" ><%=article.getTitle() %></a>  </td>
-                            <td><%=article.getStatus() %></td>
-                            <td><%=article.getClick() %></td>
-                            <td><%=article.getPublisher() %></td>
-                            <td><%=article.getUpdateTime() %></td>
-                            <td><%=article.getComments() %></td>
+                           <th class="tc" width="5%"> <input class="allChoose" name="ace" type="checkbox" value=""></th>
+                            <td>${article.ID }</td>
+                            <td><a target="_blank" href="download.do?titlefile=${article.title }" >${article.title }</a></td>
+                            <td>${article.status }</td>
+                            <td>${article.click }</td>
+                            <td>${article.publisher }</td>
+                            <td>${article.updateTime }</td>
+                            <td>${article.comments }</td>
                             <td>
-                                <a class="link-update" href="${pageContext.request.contextPath}/edit.do?id=<%=article.getID()%>">修改</a>
-                                <a class="link-del" href="${pageContext.request.contextPath}/delete.do?ID=<%=article.getID()%>">删除</a>
+                                <a class="link-update" href="${pageContext.request.contextPath}/edit.do?id=${article.ID }">修改</a>
+                                <a class="link-del" href="${pageContext.request.contextPath}/delete.do?ID=${article.ID }">删除</a>
                             </td>
                         </tr>
-                        
-                        <%
-                        		}
-                        	}
-                        %>
+                       </c:forEach>
                     </table>
-                    <div class="list-page"> 1-1</div>
+                    <div class="list-page"><%@include file="/Admin/page.jsp" %></div>
                 </div>
             </form>
         </div>

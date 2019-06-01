@@ -84,7 +84,7 @@
   <div class="blogsbox">
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
       <h3 class="blogtitle"><a href="${pageContext.request.contextPath }/life/1.jsp" target="_blank">秋收冬藏，冷暖自知</a></h3>
-      <span class="blogpic"><a href="#"><img src="${pageContext.request.contextPath}/images/toppic01.jpg" alt=""></a></span>
+      <span class="blogpic"><a href="#" ><img src="${pageContext.request.contextPath}/images/toppic01.jpg" alt=""></a></span>
       <p class="blogtext">今天又是苦涩的一天</p>
       <div class="bloginfo">
         <ul>
