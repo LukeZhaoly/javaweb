@@ -73,7 +73,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GuestBook</servlet-name>
-    <url-pattern>/GuestBook</url-pattern>
+    <url-pattern>*.ly</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -85,5 +85,33 @@
     <servlet-name>ExperienceServlet</servlet-name>
     <url-pattern>/ExperienceServlet</url-pattern>
   </servlet-mapping>
-
+  <filter>
+    <display-name>UserServletFilter</display-name>
+    <filter-name>UserServletFilter</filter-name>
+    <filter-class>cn.edu.swu.Servlet.UserLoginServlet.UserServletFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UserServletFilter</filter-name>
+    <url-pattern>/cn/edu/swu/Servlet/UserLoginServlet/UserServlet</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateHtmlServlet</display-name>
+    <servlet-name>CreateHtmlServlet</servlet-name>
+    <servlet-class>cn.edu.swu.Servlet.ArticleServlet.CreateHtmlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateHtmlServlet</servlet-name>
+    <url-pattern>/CreateHtmlServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUpDwonServlet</display-name>
+    <servlet-name>FileUpDwonServlet</servlet-name>
+    <servlet-class>cn.edu.swu.Servlet.ArticleServlet.FileUpDwonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUpDwonServlet</servlet-name>
+    <url-pattern>*.ud</url-pattern>
+  </servlet-mapping>
 </web-app>

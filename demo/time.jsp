@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -25,19 +26,19 @@
 <body>
 <header> 
   <!--menu begin-->
-  <div class="menu">
+ <div class="menu">
     <nav class="nav" id="topnav">
-       <h1 class="logo"><a href="${pageContext.request.contextPath}/Admin/">后台管理</a></h1>
-      <li><a href="${pageContext.request.contextPath}/index.jsp">网站首页</a> </li>
+      <h1 class="logo"><a href="${pageContext.request.contextPath}/Admin/">后台管理</a></h1>
+      <li><a href="${pageContext.request.contextPath}/getAll.do">网站首页</a> </li>
       <li><a href="${pageContext.request.contextPath}/about.jsp">关于我</a> </li>
-      <li><a href="${pageContext.request.contextPath}/study/">学无止境</a>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">学无止境</a>
         <ul class="sub-nav">
-          <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+          	<li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">心得笔记</a></li>
+            <li><a href="${pageContext.request.contextPath}/get.ud">推荐工具</a></li>
         </ul>
       </li>
-      <li><a href="${pageContext.request.contextPath}/life/">慢生活</a></li>
-      <li><a href="${pageContext.request.contextPath}/time.jsp">时间轴</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=life">慢生活</a></li>
+      <li><a href="${pageContext.request.contextPath}/listTime.do">时间轴</a> </li>
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
       
             <!--search begin-->
@@ -81,22 +82,13 @@
 <div class="container">
   <h1 class="t_nav"><span>时光飞逝，机会就在我们眼前，何时找到了灵感，就要把握机遇，我们需要智慧和勇气去把握机会。</span><a href="${pageContext.request.contextPath}/index.jsp" class="n1">网站首页</a><a href="${pageContext.request.contextPath}/time.jsp" class="n2">时间轴</a></h1>
   <div class="timebox">
-  <%
-  		List<Article> articles=(List<Article>)request.getSession().getAttribute("Experience");
-  		if(articles!=null){
-  %>
+  
   <ul id="list" style="display:none;">
-  			<% 
-  				for(Article article:articles){
-  			%>
-    <li><span><%=article.getUpdateTime() %></span><a href="#" title=""><%=article.getTitle() %></a></li>
-    	<% 	
-  			}
-  		%>
+  		<c:forEach items="${list }" var="article">
+  		    <li><span></span><a href="${pageContext.request.contextPath }/${article.flagstr }/${article.title }.jsp" title="">${article.title }</a></li>
+    	</c:forEach>
   </ul>
- <%
-  		}
- %>
+ 
   <ul id="list2">
   </ul>
   <script src="${pageContext.request.contextPath}/js/page2.js"></script> 

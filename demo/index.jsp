@@ -2,6 +2,7 @@
 <%@page import="cn.edu.swu.domain.Article"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -27,16 +28,16 @@
   <div class="menu">
     <nav class="nav" id="topnav">
       <h1 class="logo"><a href="${pageContext.request.contextPath}/Admin/">后台管理</a></h1>
-      <li><a href="${pageContext.request.contextPath}/index.jsp">网站首页</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do">网站首页</a> </li>
       <li><a href="${pageContext.request.contextPath}/about.jsp">关于我</a> </li>
-      <li><a href="${pageContext.request.contextPath}/ExperienceServlet">学无止境</a>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">学无止境</a>
         <ul class="sub-nav">
-          <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+          <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">心得笔记</a></li>
+            <li><a href="${pageContext.request.contextPath}/get.ud">推荐工具</a></li>
         </ul>
       </li>
-      <li><a href="${pageContext.request.contextPath}/life/">慢生活</a></li>
-      <li><a href="${pageContext.request.contextPath}/time.jsp">时间轴</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=life">慢生活</a></li>
+      <li><a href="${pageContext.request.contextPath}/listTime.do">时间轴</a> </li>
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
      
       <!--search begin-->
@@ -60,13 +61,13 @@
   <div id="mnav">
     <h2><a href="${pageContext.request.contextPath}/Admin/" class="mlogo">后台管理</a><span class="navicon"></span></h2>
     <dl class="list_dl">
-      <dt class="list_dt"> <a href="${pageContext.request.contextPath}/index.jsp">网站首页</a> </dt>
+      <dt class="list_dt"> <a href="${pageContext.request.contextPath}/ExperienceServlet">网站首页</a> </dt>
       <dt class="list_dt"> <a href="${pageContext.request.contextPath}/about.jsp">关于我</a> </dt>
       <dt class="list_dt"> <a href="${pageContext.request.contextPath}/study/">学无止境</a> </dt>
       <dd class="list_dd">
         <ul>
-        <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+        	<li><a href="${pageContext.request.contextPath}/study/">心得笔记</a></li>
+            <li><a href="${pageContext.request.contextPath}/get.ud">推荐工具</a></li>
          
         </ul>
       </dd>
@@ -82,9 +83,9 @@
  <div class="picsbox"> 
   <div class="banner">
     <div id="banner" class="fader">
-      <li class="slide" ><a href="${pageContext.request.contextPath}/life/" target="_blank"><img src="${pageContext.request.contextPath}/images/banner01.jpg"><span class="imginfo">今天的生活还是同样的苦涩！</span></a></li>
-      <li class="slide" ><a href="${pageContext.request.contextPath}/study/s2/" target="_blank"><img src="${pageContext.request.contextPath}/images/banner02.jpg"><span class="imginfo">各种资源分享！</span></a></li>
-      <li class="slide" ><a href="${pageContext.request.contextPath}/study/s1/" target="_blank"><img src="${pageContext.request.contextPath}/images/banner03.jpg"><span class="imginfo">精美短文</span></a></li>
+      <li class="slide" ><a href="${pageContext.request.contextPath}/life/" target="_blank"><img src="${pageContext.request.contextPath}/images/banner01.jpg"><span class="imginfo">生活琐事</span></a></li>
+      <li class="slide" ><a href="${pageContext.request.contextPath}/study/s1/" target="_blank"><img src="${pageContext.request.contextPath}/images/banner02.jpg"><span class="imginfo">各种资源分享！</span></a></li>
+      <li class="slide" ><a href="${pageContext.request.contextPath}/study/" target="_blank"><img src="${pageContext.request.contextPath}/images/banner03.jpg"><span class="imginfo">学习心得</span></a></li>
       <div class="fader_controls">
         <div class="page prev" data-target="prev">&lsaquo;</div>
         <div class="page next" data-target="next">&rsaquo;</div>
@@ -107,29 +108,23 @@
   <!--blogsbox begin-->
   <div class="blogsbox">
   
+  <c:forEach items="${Experience}" var="article">
 	<div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-   <% 
-	  			for(int i=0;i<9;i++){
-	  		
-  %>
-      <h3 class="blogtitle"><a href="/" target="_blank">.....</a></h3>
+      <h3 class="blogtitle"><a href="${pageContext.request.contextPath }/${article.flagstr}/${article.title}.jsp" target="_blank">${article.title }</a></h3>
       <span class="blogpic"><a href="/" title=""><img src="${pageContext.request.contextPath}/images/toppic01.jpg" alt=""></a></span>
-      <p class="blogtext">这个整起有点难</p>
+      <p class="blogtext">${article.title }</p>
       <div class="bloginfo">
         <ul>
-          <li class="author"><a href="#">赵流洋</a></li>
-          <li class="lmname"><a href="#">学无止境</a></li>
-          <li class="timer">2018-5-13</li>
+          <li class="author"><a href="#">${article.publisher }</a></li>
+          <li class="lmname"><a href="#">${article.flagstr }</a></li>
+          
           <li class="view"><span>34567</span>已阅读</li>
           <li class="like">9999</li>
         </ul>
       </div>
       <br><br>
-     <%
-	  			}
-	  		
-	  %>
     </div>
+    </c:forEach> 
    
   </div>
   

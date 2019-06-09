@@ -1,12 +1,15 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="cn.edu.swu.domain.*"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>心得分享_个人博客 </title>
+<title>学无止境_个人博客 </title>
 <meta name="keywords" content="个人博客" />
-<meta name="description" content="学习心得，使用心得" />
+<meta name="description" content="学习心得，学习工具分享" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet">
@@ -25,16 +28,16 @@
   <div class="menu">
     <nav class="nav" id="topnav">
       <h1 class="logo"><a href="${pageContext.request.contextPath}/Admin/">后台管理</a></h1>
-      <li><a href="${pageContext.request.contextPath}/index.jsp">网站首页</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do">网站首页</a> </li>
       <li><a href="${pageContext.request.contextPath}/about.jsp">关于我</a> </li>
-      <li><a href="${pageContext.request.contextPath}/study/">学无止境</a>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">学无止境</a>
         <ul class="sub-nav">
-          <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+           <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">心得笔记</a></li>
+            <li><a href="${pageContext.request.contextPath}/get.ud">推荐工具</a></li>
         </ul>
       </li>
-      <li><a href="${pageContext.request.contextPath}/life/">慢生活</a></li>
-      <li><a href="${pageContext.request.contextPath}/time.jsp">时间轴</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=life">慢生活</a></li>
+      <li><a href="${pageContext.request.contextPath}/listTime.do">时间轴</a> </li>
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
      
       <!--search begin-->
@@ -63,8 +66,8 @@
       <dt class="list_dt"> <a href="${pageContext.request.contextPath}/study/">学无止境</a> </dt>
       <dd class="list_dd">
         <ul>
-        <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+        <li><a href="${pageContext.request.contextPath}/study/">心得笔记</a></li>
+          <li><a href="${pageContext.request.contextPath}/study/s1/">推荐工具</a></li>
          
         </ul>
       </dd>
@@ -75,47 +78,83 @@
   </div>
   <!--mnav end--> 
 </header>
+
 <div class="pagebg sh"></div>
 <div class="container">
-  <h1 class="t_nav"><span>好咖啡要和朋友一起品尝，好工具也要和同样喜欢它的人一起分享。 </span><a href="${pageContext.request.contextPath}/" class="n1">网站首页</a><a href="${pageContext.request.contextPath}/study/s1/index.jsp" class="n2">心得分享</a></h1>
+  <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="${pageContext.request.contextPath}/" class="n1">网站首页</a><a href="${pageContext.request.contextPath}/study" class="n2">学无止境</a></h1>
+  <!--blogsbox begin-->
+  <c:forEach items="${fgBeans}" var="fbean">
+  	 <div class="blogsbox">
+    	<div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+    
+      <h3 class="blogtitle"><a href="${pageContext.request.contextPath }/download.ud?titlefile=${fbean.title}" target="_blank">${fbean.filename }</a></h3><br>
+    	</div>
+    </div>
+   </c:forEach>
+   
+   
+  
+  </div>
+  <!--blogsbox end-->
+  <div class="sidebar">
+    <div class="zhuanti">
+      <h2 class="hometitle">特别推荐</h2>
+      <ul>
+        <li> <i><img src="${pageContext.request.contextPath}/images/banner03.jpg"></i>
+          <p>java多线程相关 <span><a href="https://www.cnblogs.com/langtianya/p/3874019.html">阅读</a></span> </p>
+        </li>
+        <li> <i><img src="${pageContext.request.contextPath}/images/b04.jpg"></i>
+          <p>spring源码解读 <span><a href="https://www.cnblogs.com/ITtangtang/p/3978349.html">阅读</a></span></p>
+        </li>
+        <li> <i><img src="${pageContext.request.contextPath}/images/b05.jpg"></i>
+          <p>java后端开发学习顺序<span><a href="https://www.cnblogs.com/caoleiCoding/p/6170555.html">阅读</a></span></p>
+        </li>
+      </ul>
+    </div>
+    <div class="tuijian">
+      <h2 class="hometitle">推荐文章</h2>
+      <ul class="tjpic">
+        <i><img src="${pageContext.request.contextPath}/images/toppic01.jpg"></i>
+        <p><a href="http://www.gulixueyuan.com/course/309">java核心技术视频</a></p>
+      </ul>
+      <ul class="sidenews">
+        <li> <i><img src="${pageContext.request.contextPath}/images/toppic01.jpg"></i>
+          <p><a href="http://www.gulixueyuan.com/course/201">MySQL 数据库相关操作</a></p>
+          <span>2018-05-13</span> </li>
+        <li> <i><img src="${pageContext.request.contextPath}/images/toppic02.jpg"></i>
+          <p><a href="http://www.gulixueyuan.com/course/60">js相关学习</a></p>
+          <span>2018-05-13</span> </li>
+        <li> <i><img src="${pageContext.request.contextPath}/images/v1.jpg"></i>
+          <p><a href="http://www.gulixueyuan.com/course/193">javaweb学习</a></p>
+          <span>2018-05-13</span> </li>
+        <li> <i><img src="${pageContext.request.contextPath}/images/v2.jpg"></i>
+          <p><a href="http://www.gulixueyuan.com/course/46">spring相关学习</a></p>
+          <span>2018-05-13</span> </li>
+      </ul>
+    </div>
+   
+   
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+        <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
+      </ul>
+    </div>
+    
+   <div class="guanzhu" id="follow-us">
+      <h2 class="hometitle">关注我们 </h2>
+      <ul>
+        <li class="qq"><a href="#" target="_blank"><span>QQ号</span>2087961925</a></li>
+        <li class="email"><a href="#" target="_blank"><span>邮箱帐号</span>2087961925@qq.com</a></li>
+        <li class="wxgzh"><a href="#" target="_blank"><span>微信号</span>一苇以航</a></li>
+       
+      </ul>
+    </div>
+  </div>
 
-
-<div class="share">
-<ul>
- <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/toppic01.jpg"></i>
-      <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
-      <span>喜欢 | 190</span> </a></div> </li>
- <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/toppic02.jpg"></i>
-      <h2><b>陌上花开，可缓缓归矣</b></h2>
-      <span>喜欢 | 190</span> </a></div> </li>
- <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/banner01.jpg"></i>
-      <h2><b>网页中图片属性固定宽度，如何用js改变大小</b></h2>
-      <span>喜欢 | 190</span> </a> </div> </li>
- <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/text01.jpg"></i>
-      <h2><b>个人博客，属于我的小世界！</b></h2>
-      <span>喜欢 | 190</span> </a> </div> </li>
- <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/text02.jpg"></i>
-      <h2><b>html5个人博客模板《黑色格调》</b></h2>
-      <span>喜欢 | 190</span> </a> </div> </li>
- <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/banner02.jpg"></i>
-      <h2><b>帝国cms 首页或者列表无图，不使用默认图片的方法</b></h2>
-      <span>喜欢 | 190</span> </a> </div> </li>
-       <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/text02.jpg"></i>
-      <h2><b>十条设计原则教你学会如何设计网页布局!</b></h2>
-      <span>喜欢 | 190</span> </a> </div> </li>
- <li> <div class="shareli"><a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/images/banner02.jpg"></i>
-      <h2><b>html5个人博客模板主题《清雅》</b></h2>
-      <span>喜欢 | 190</span> </a> </div> </li>
-</ul>
-</div>
-
-<div class="pagelist"><a title="Total record">&nbsp;<b>45</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_2.html">下一页</a>&nbsp;<a href="/download/index_2.html">尾页</a></div>
-
-
-</div>
 <footer>
   <p>Design by <a href="#" target="_blank">赵流洋</a></p>
 </footer>
-<a href="${pageContext.request.contextPath}/study/s1/index.jsp" class="cd-top">Top</a>
+<a href="${pageContext.request.contextPath}/study/index.jsp" class="cd-top">Top</a>
 </body>
 </html>

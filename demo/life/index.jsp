@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -25,16 +26,16 @@
   <div class="menu">
     <nav class="nav" id="topnav">
       <h1 class="logo"><a href="${pageContext.request.contextPath}/Admin/">后台管理</a></h1>
-      <li><a href="${pageContext.request.contextPath}/index.jsp">网站首页</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do">网站首页</a> </li>
       <li><a href="${pageContext.request.contextPath}/about.jsp">关于我</a> </li>
-      <li><a href="${pageContext.request.contextPath}/study/">学无止境</a>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">学无止境</a>
         <ul class="sub-nav">
-          <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+           <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">心得笔记</a></li>
+            <li><a href="${pageContext.request.contextPath}/get.ud">推荐工具</a></li>
         </ul>
       </li>
-      <li><a href="${pageContext.request.contextPath}/life/">慢生活</a></li>
-      <li><a href="${pageContext.request.contextPath}/time.jsp">时间轴</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=life">慢生活</a></li>
+      <li><a href="${pageContext.request.contextPath}/listTime.do">时间轴</a> </li>
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
      
       <!--search begin-->
@@ -81,11 +82,13 @@
 <div class="container">
   <h1 class="t_nav"><span>慢生活，不是懒惰，放慢速度不是拖延时间，而是让我们在生活中寻找到平衡。</span><a href="${pageContext.request.contextPath}/" class="n1">网站首页</a><a href="${pageContext.request.contextPath}/" class="n2">慢生活</a></h1>
   <!--blogsbox begin-->
+  
+  <c:forEach items="${Experience }" var="article">
   <div class="blogsbox">
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-      <h3 class="blogtitle"><a href="${pageContext.request.contextPath }/life/1.jsp" target="_blank">秋收冬藏，冷暖自知</a></h3>
+      <h3 class="blogtitle"><a href="${pageContext.request.contextPath }/life/${article.title}.jsp" target="_blank">${article.title }</a></h3>
       <span class="blogpic"><a href="#" ><img src="${pageContext.request.contextPath}/images/toppic01.jpg" alt=""></a></span>
-      <p class="blogtext">今天又是苦涩的一天</p>
+      <p class="blogtext">${article.title} </p>
       <div class="bloginfo">
         <ul>
           <li class="author"><a href="/">zly</a></li>
@@ -96,6 +99,8 @@
         </ul>
       </div>
     </div>
+    </div>
+   </c:forEach>
    
    
     

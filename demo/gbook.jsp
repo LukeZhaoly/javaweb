@@ -25,16 +25,16 @@
   <div class="menu">
     <nav class="nav" id="topnav">
       <h1 class="logo"><a href="${pageContext.request.contextPath}/Admin/">后台管理</a></h1>
-      <li><a href="${pageContext.request.contextPath}/index.jsp">网站首页</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do">网站首页</a> </li>
       <li><a href="${pageContext.request.contextPath}/about.jsp">关于我</a> </li>
-      <li><a href="${pageContext.request.contextPath}/study/">学无止境</a>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">学无止境</a>
         <ul class="sub-nav">
-          <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+         	<li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">心得笔记</a></li>
+            <li><a href="${pageContext.request.contextPath}/get.ud">推荐工具</a></li>
         </ul>
       </li>
-      <li><a href="${pageContext.request.contextPath}/life/">慢生活</a></li>
-      <li><a href="${pageContext.request.contextPath}/time.jsp">时间轴</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=life">慢生活</a></li>
+      <li><a href="${pageContext.request.contextPath}/listTime.do">时间轴</a> </li>
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
      
       <!--search begin-->
@@ -80,8 +80,9 @@
   <h1 class="t_nav"><span>你，我生命中一个重要的过客，我们之所以是过客，因为你未曾会为我停留。</span><a href="${pageContext.request.contextPath}" class="n1">网站首页</a><a href="${pageContext.request.contextPath}/gbook.jsp" class="n2">留言</a></h1>
   <div class="news_infos">
     <ul>
-      	<form action="GuestBook" method="post">
+      	<form action="insert.ly" method="post">
       		<textarea name="guestbook" cols="50" style="width: 98%;" rows="10"></textarea>
+      		<input name="guestuser" placeholder="联系方式"><br>
       		<input type="submit" value="留言" class="n2">
       	</form>
     </ul>

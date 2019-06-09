@@ -48,11 +48,12 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/Admin/main.jsp"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
+                         <li><a href="${pageContext.request.contextPath}/query.ud"><i class="icon-font">&#xe008;</i>文件管理</a></li>
                         <li><a href="${pageContext.request.contextPath}/getPage.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
                       
-                        <li><a href="#"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get.ly"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
                         <li><a href="http://www.baidu.com/"><i class="icon-font">&#xe052;</i>友情链接</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe033;</i>广告管理</a></li>
+                     
                     </ul>
                 </li>
                 <li>
@@ -60,8 +61,7 @@
                     <ul class="sub-menu">
                         <li><a href="${pageContext.request.contextPath}/Admin/system.jsp"><i class="icon-font">&#xe017;</i>系统设置</a></li>
                         <li><a href="${pageContext.request.contextPath}/getPage.action"><i class="icon-font">&#xe037;</i>用户管理</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe046;</i>数据备份</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe045;</i>数据还原</a></li>
+                       
                     </ul>
                 </li>
             </ul>
@@ -82,7 +82,8 @@
                             <td>
                                 <select name="search-sort" id="">
                                     <option value="">全部</option>
-                                    <option value="19">编程学习</option><option value="20">精美短文</option>
+                                    <option value="s">学习心得</option>
+                                    <option value="l">慢生活</option>
                                 </select>
                             </td>
                             <th width="70">关键字:</th>
@@ -100,7 +101,7 @@
             <form action="query.do"  name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="${pageContext.request.contextPath}/Admin/insert.jsp"><i class="icon-font"></i>新增作品</a>
+                        <a href="${pageContext.request.contextPath}/Admin/CreatArticle.jsp"><i class="icon-font"></i>新增作品</a>
                         <a id="batchDel" href="DeleteMoreAces.do" ><i class="icon-font"></i>批量删除</a>
                         <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
                     </div>
@@ -116,7 +117,7 @@
                             <th>click</th>
                             <th>Publisher</th>
                             <th>UpdateTime</th>
-                            <th>Comments</th>
+                            <th>flagstr</th>
                         	<th>Operation</th>
                         </tr>
                        <c:forEach items="${pbList.beanList }" var="article">
@@ -129,7 +130,7 @@
                             <td>${article.click }</td>
                             <td>${article.publisher }</td>
                             <td>${article.updateTime }</td>
-                            <td>${article.comments }</td>
+                           	<td>${article.flagstr }</td>
                             <td>
                                 <a class="link-update" href="${pageContext.request.contextPath}/edit.do?id=${article.ID }">修改</a>
                                 <a class="link-del" href="${pageContext.request.contextPath}/delete.do?ID=${article.ID }">删除</a>

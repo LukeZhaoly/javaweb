@@ -45,11 +45,12 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/Admin/main.jsp"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
+                         <li><a href="${pageContext.request.contextPath}/query.ud"><i class="icon-font">&#xe008;</i>文件管理</a></li>
                         <li><a href="${pageContext.request.contextPath}/getPage.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
                        
-                        <li><a href="#"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get.ly"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
                         <li><a href="http://www.baidu.com/"><i class="icon-font">&#xe052;</i>友情链接</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe033;</i>广告管理</a></li>
+                      
                     </ul>
                 </li>
                 <li>
@@ -57,8 +58,7 @@
                     <ul class="sub-menu">
                         <li><a href="${pageContext.request.contextPath}/Admin/system.jsp"><i class="icon-font">&#xe017;</i>系统设置</a></li>
                         <li><a href="${pageContext.request.contextPath}/getPage.action"><i class="icon-font">&#xe037;</i>用户管理</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe046;</i>数据备份</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe045;</i>数据还原</a></li>
+                       
                     </ul>
                 </li>
             </ul>

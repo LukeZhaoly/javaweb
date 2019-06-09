@@ -46,13 +46,14 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/Admin/main.jsp"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
+                         <li><a href="${pageContext.request.contextPath}/query.ud"><i class="icon-font">&#xe008;</i>文件管理</a></li>
                         <li><a href="${pageContext.request.contextPath}/getPage.do"><i class="icon-font">&#xe008;</i>作品管理</a></li>
                       
                        
-                        <li><a href="#"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
+                        <li><a href="${pageContext.request.contextPath }"><i class="icon-font">&#xe004;</i>留言/评论管理</a></li>
                         
                         <li><a href="http://www.baidu.com/"><i class="icon-font">&#xe052;</i>友情链接</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe033;</i>广告管理</a></li>
+                      
                     </ul>
                 </li>
                 <li>
@@ -60,8 +61,7 @@
                     <ul class="sub-menu">
                         <li><a href="${pageContext.request.contextPath}/Admin/system.jsp"><i class="icon-font">&#xe017;</i>系统设置</a></li>
                         <li><a href="${pageContext.request.contextPath}/getPage.action"><i class="icon-font">&#xe037;</i>用户管理</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe046;</i>数据备份</a></li>
-                        <li><a href="#"><i class="icon-font">&#xe045;</i>数据还原</a></li>
+                       
                     </ul>
                 </li>
             </ul>
@@ -75,7 +75,7 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="${pageContext.request.contextPath}/add.do" method="post"  enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath}/add.do" method="post" >
                     <table class="insert-tab" width="100%">
                         
                         <tbody><tr>
@@ -83,7 +83,8 @@
                             <td>
                                 <select name="colId" id="catid" class="required">
                                     <option value="">请选择</option>
-                                    <option value="19">精品界面</option><option value="20">推荐界面</option>
+                                    <option value="study">学习心得</option>
+                                    <option value="life">慢生活</option>
                                 </select>
                             </td>
                         </tr>
@@ -97,15 +98,9 @@
                                 <th>作者：</th>
                                 <td><input class="common-text" name="author" size="50" value="" type="text"></td>
                             </tr>
+                           
                             <tr>
-                            	
-	                                <th><i class="require-red">*</i>文件：</th>
-	                                <td><input name="file" id="" type="file">
-	                                <!--<input type="submit" onclick="submitForm('/js${pageContext.request.contextPath}/css/admin/design/upload')" value="上传图片"/>-->
-                           		
-                            </tr>
-                            <tr>
-                                <th>Comments：</th>
+                                <th>内容：</th>
                                 <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
                             </tr>
                           
@@ -116,7 +111,8 @@
                                     <input class="btn btn6" onClick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>
-                        </tbody></table>
+                        </tbody>
+                        </table>
                 </form>
             </div>
         </div>

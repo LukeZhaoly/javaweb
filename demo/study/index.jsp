@@ -1,7 +1,8 @@
-﻿<%@page import="cn.edu.swu.domain.Article"%>
+﻿<%@page import="cn.edu.swu.domain.*"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -27,16 +28,16 @@
   <div class="menu">
     <nav class="nav" id="topnav">
       <h1 class="logo"><a href="${pageContext.request.contextPath}/Admin/">后台管理</a></h1>
-      <li><a href="${pageContext.request.contextPath}/index.jsp">网站首页</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do">网站首页</a> </li>
       <li><a href="${pageContext.request.contextPath}/about.jsp">关于我</a> </li>
-      <li><a href="${pageContext.request.contextPath}/study/">学无止境</a>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">学无止境</a>
         <ul class="sub-nav">
-          <li><a href="${pageContext.request.contextPath}/study/s1/">心得笔记</a></li>
-          <li><a href="${pageContext.request.contextPath}/study/s2/">推荐工具</a></li>
+         <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=study">心得笔记</a></li>
+            <li><a href="${pageContext.request.contextPath}/get.ud">推荐工具</a></li>
         </ul>
       </li>
-      <li><a href="${pageContext.request.contextPath}/life/">慢生活</a></li>
-      <li><a href="${pageContext.request.contextPath}/time.jsp">时间轴</a> </li>
+      <li><a href="${pageContext.request.contextPath}/getAll.do?flagstr=life">慢生活</a></li>
+      <li><a href="${pageContext.request.contextPath}/listTime.do">时间轴</a> </li>
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
      
       <!--search begin-->
@@ -77,39 +78,29 @@
   </div>
   <!--mnav end--> 
 </header>
-<%
-	List<Article> articles=(List<Article>)request.getSession().getAttribute("Experience");
-%>
+
 <div class="pagebg sh"></div>
 <div class="container">
   <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="${pageContext.request.contextPath}/" class="n1">网站首页</a><a href="${pageContext.request.contextPath}/study" class="n2">学无止境</a></h1>
   <!--blogsbox begin-->
-  
+  <c:forEach items="${Experience }" var="article">
   <div class="blogsbox">
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-  <%
-  		if(articles!=null){
-  			for(Article article:articles){
-  %>
-      <h3 class="blogtitle"><a href="/" target="_blank"><%=article.getTitle()%></a></h3><br>
-      <span class="blogpic"><a href="/" title=""><img src="../images/toppic01.jpg" alt=""></a></span><br>
-      <p class="blogtext"><%=article.getComments() %></p>
+      <h3 class="blogtitle"><a href="${pageContext.request.contextPath }/study/${article.title}.jsp" target="_blank">${article.title }</a></h3><br>
+      <span class="blogpic"><a href="" title=""><img src="${pageContext.request.contextPath }/images/toppic01.jpg" alt=""></a></span><br>
+      <p class="blogtext">${article.title }</p>
       <div class="bloginfo">
         <ul>
-          <li class="author"><a href="#"><%=article.getPublisher() %></a></li>
+          <li class="author"><a href="#">${article.publisher }</a></li>
           <li class="lmname"><a href="#">学无止境</a></li>
-          <li class="timer"><%=article.getUpdateTime() %></li>
+          <li class="timer">${article.updateTime }</li>
           <li class="view"><span>34567</span>已阅读</li>
           <li class="like">9999</li>
         </ul>
       </div>
       <br><br><br><br><br>
-  <%
-  				}
-  			}
-  %>
     </div>
-    
+    </c:forEach>
    
     <div class="pagelist"><a title="Total record">&nbsp;<b>45</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_2.html">下一页</a>&nbsp;<a href="/download/index_2.html">尾页</a></div>
   
