@@ -38,16 +38,7 @@
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
      
       <!--search begin-->
-      <div id="search_bar" class="search_bar">
-        <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
-          <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
-          <input type="hidden" name="show" value="title" />
-          <input type="hidden" name="tempid" value="1" />
-          <input type="hidden" name="tbname" value="news">
-          <input type="hidden" name="Submit" value="搜索" />
-          <span class="search_ico"></span>
-        </form>
-      </div>
+      <h3 >当前在线人数：${userCounts }</h3>
       <!--search end--> 
     </nav>
   </div>

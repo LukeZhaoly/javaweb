@@ -118,7 +118,7 @@
                             <td>${user.phone }</td>
                           
                             <td>
-                               	<a class="link-del" href="${pageContext.request.contextPath}/getPrivileges.action?uid=${user.uid}">权限管理</a>
+                               
                                 <a class="link-del" href="${pageContext.request.contextPath}/Userdelete.action?uid=${user.uid}">删除</a>
                             </td>
                         </tr>

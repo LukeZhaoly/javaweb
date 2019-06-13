@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <c3p0-config>
-    <named-config name="swu">
+    <named-config name="MyDB">
        	<property name="user">root</property>
         <property name="password">zly970114</property>
         <property name="driverClass">com.mysql.cj.jdbc.Driver</property>

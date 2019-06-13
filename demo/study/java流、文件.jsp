@@ -39,7 +39,16 @@
      
      
       <!--search begin-->
-      <h3 >当前在线人数：${userCounts }</h3>
+      <div id="search_bar" class="search_bar">
+        <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
+          <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
+          <input type="hidden" name="show" value="title" />
+          <input type="hidden" name="tempid" value="1" />
+          <input type="hidden" name="tbname" value="news">
+          <input type="hidden" name="Submit" value="搜索" />
+          <span class="search_ico"></span>
+        </form>
+      </div>
       <!--search end--> 
     </nav>
   </div>
@@ -85,7 +94,68 @@
       </div>
       <div class="tags"><a href="/" target="_blank">个人博客</a> &nbsp; <a href="/" target="_blank">小世界</a></div>
      <!-- 文章内容 -->
-    ##title##
+    Java 流(Stream)、文件(File)和IO<br>
+Java.io 包几乎包含了所有操作输入、输出需要的类。所有这些流类代表了输入源和输出目标。<br>
+
+Java.io 包中的流支持很多种格式，比如：基本类型、对象、本地化字符集等等。<br>
+
+一个流可以理解为一个数据的序列。输入流表示从一个源读取数据，输出流表示向一个目标写数据。<br>
+
+Java 为 I/O 提供了强大的而灵活的支持，使其更广泛地应用到文件传输和网络编程中。<br>
+
+但本节讲述最基本的和流与 I/O 相关的功能。我们将通过一个个例子来学习这些功能。<br>
+
+读取控制台输入<br>
+Java 的控制台输入由 System.in 完成。<br>
+
+为了获得一个绑定到控制台的字符流，你可以把 System.in 包装在一个 BufferedReader 对象中来创建一个字符流。<br>
+
+下面是创建 BufferedReader 的基本语法：<br>
+
+BufferedReader br = new BufferedReader(new <br>
+                      InputStreamReader(System.in));<br>
+BufferedReader 对象创建后，我们便可以使用 read() 方法从控制台读取一个字符，或者用 readLine() 方法读取一个字符串。<br>
+
+从控制台读取多字符输入<br>
+从 BufferedReader 对象读取一个字符要使用 read() 方法，它的语法如下：<br>
+
+int read( ) throws IOException<br>
+每次调用 read() 方法，它从输入流读取一个字符并把该字符作为整数值返回。 当流结束的时候返回 -1。该方法抛出 IOException。<br>
+下面的程序示范了用 read() 方法从控制台不断读取字符直到用户输入 "q"。<br>
+
+BRRead.java 文件代码：<br>
+//使用 BufferedReader 在控制台读取字符<br>
+ 
+import java.io.*;<br>
+ 
+public class BRRead {<br>
+    public static void main(String args[]) throws IOException {<br>
+        char c;
+        // 使用 System.in 创建 BufferedReader<br>
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));<br>
+        System.out.println("输入字符, 按下 'q' 键退出。");<br>
+        // 读取字符
+        do {<br>
+            c = (char) br.read();<br>
+            System.out.println(c);<br>
+        } while (c != 'q');<br>
+    }<br>
+}<br>
+以上实例编译运行结果如下:<br>
+
+输入字符, 按下 'q' 键退出。<br>
+runoob<br>
+r<br>
+u<br>
+n<br>
+o<br>
+o<br>
+b<br>
+  <br>
+   <br>
+q <br>
+q<br>
+
      <br>
      <center>
      	<img alt="" src="${pageContext.request.contextPath }/images/templet/08-34-26-0.gif">

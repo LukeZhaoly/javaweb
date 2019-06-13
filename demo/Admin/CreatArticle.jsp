@@ -101,7 +101,7 @@
                            
                             <tr>
                                 <th>内容：</th>
-                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
+                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 50%;" rows="10"></textarea></td>
                             </tr>
                           
                             <tr>

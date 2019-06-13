@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <session-config>
+  	<session-timeout>1</session-timeout>
+  </session-config>
   <context-param>
     <param-name>encoding</param-name>
     <param-value>UTF-8</param-value>
@@ -85,15 +88,6 @@
     <servlet-name>ExperienceServlet</servlet-name>
     <url-pattern>/ExperienceServlet</url-pattern>
   </servlet-mapping>
-  <filter>
-    <display-name>UserServletFilter</display-name>
-    <filter-name>UserServletFilter</filter-name>
-    <filter-class>cn.edu.swu.Servlet.UserLoginServlet.UserServletFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>UserServletFilter</filter-name>
-    <url-pattern>/cn/edu/swu/Servlet/UserLoginServlet/UserServlet</url-pattern>
-  </filter-mapping>
   <servlet>
     <description></description>
     <display-name>CreateHtmlServlet</display-name>
@@ -114,4 +108,7 @@
     <servlet-name>FileUpDwonServlet</servlet-name>
     <url-pattern>*.ud</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>cn.edu.swu.Servlet.UserLoginServlet.MyHtttpsessionListener</listener-class>
+  </listener>
 </web-app>

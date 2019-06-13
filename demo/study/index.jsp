@@ -41,16 +41,7 @@
       <li><a href="${pageContext.request.contextPath}/gbook.jsp">留言</a> </li>
      
       <!--search begin-->
-      <div id="search_bar" class="search_bar">
-        <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
-          <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
-          <input type="hidden" name="show" value="title" />
-          <input type="hidden" name="tempid" value="1" />
-          <input type="hidden" name="tbname" value="news">
-          <input type="hidden" name="Submit" value="搜索" />
-          <span class="search_ico"></span>
-        </form>
-      </div>
+      <h3 >当前在线人数：${userCounts }</h3>
       <!--search end--> 
     </nav>
   </div>
@@ -83,8 +74,8 @@
 <div class="container">
   <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="${pageContext.request.contextPath}/" class="n1">网站首页</a><a href="${pageContext.request.contextPath}/study" class="n2">学无止境</a></h1>
   <!--blogsbox begin-->
-  <c:forEach items="${Experience }" var="article">
   <div class="blogsbox">
+  <c:forEach items="${Experience }" var="article">
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
       <h3 class="blogtitle"><a href="${pageContext.request.contextPath }/study/${article.title}.jsp" target="_blank">${article.title }</a></h3><br>
       <span class="blogpic"><a href="" title=""><img src="${pageContext.request.contextPath }/images/toppic01.jpg" alt=""></a></span><br>

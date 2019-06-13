@@ -39,7 +39,16 @@
      
      
       <!--search begin-->
-      <h3 >当前在线人数：${userCounts }</h3>
+      <div id="search_bar" class="search_bar">
+        <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
+          <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
+          <input type="hidden" name="show" value="title" />
+          <input type="hidden" name="tempid" value="1" />
+          <input type="hidden" name="tbname" value="news">
+          <input type="hidden" name="Submit" value="搜索" />
+          <span class="search_ico"></span>
+        </form>
+      </div>
       <!--search end--> 
     </nav>
   </div>
@@ -85,7 +94,119 @@
       </div>
       <div class="tags"><a href="/" target="_blank">个人博客</a> &nbsp; <a href="/" target="_blank">小世界</a></div>
      <!-- 文章内容 -->
-    ##title##
+    java.lang.Class 类是Java中的反射中心。<br>
+
+Class类的一个对象表示运行时程序中的一个类。<br>
+
+Class 类是一个通用类。<br>
+
+它需要一个类型参数，它是由 Class 对象表示的类的类型。<br>
+
+例如， Class<Boolean> 表示布尔类的类对象。<br>
+
+Class<?> 表示其类未知的类类型。
+<br>
+我们可以使用 Class 类在运行时查找类的信息。
+<br>
+我们可以通过以下方式获取类的Class对象的引用:
+<br>
+使用类文字<br>
+使用Object类的getClass()方法<br>
+使用Class类的forName()方法<br>
+
+类文字<br>
+类文字是类名称后跟一个点和单词“类"。<br>
+
+例如，如果你有一个类 Test ，它的类文字是 Test.class ，你可以写<br>
+
+Class<Test> testClass = Test.class;<br>
+您还可以获取原始数据类型的类对象关键字 void 使用类文字boolean.class，byte.class，char.class，short.class，int.class，long.class，float.class，double.class和void.class。<br>
+
+每个包装器原始数据类型类具有名为 TYPE 的静态字段，它具有对它表示的基本数据类型的类对象的引用。<br>
+
+int.class 和 Integer.TYPE 指的是同一个类对象。<br><br>
+
+public class Main {<br>
+  public static void main(String[] args) {<br>
+    Class c = boolean.class;<br>
+    c = Boolean.TYPE;<br>
+    c = byte.class;<br>
+    c = Byte.TYPE;<br>
+    c = char.class;<br>
+    c = Character.TYPE;<br>
+    c = short.class;<br>
+    c = Short.TYPE ;<br>
+    c = int.class;<br>
+    c = Integer.TYPE;<br>
+    c = long.class;<br>
+    c = Long.TYPE;<br>
+    c = float.class;<br>
+    c = Float.TYPE; <br>
+    c = double.class;<br>
+    c = Double.TYPE; <br>
+    c = void.class;<br>
+    c = Void.TYPE;<br>
+  }<br>
+}<br>
+getClass()方法<br>
+Object类有一个 getClass()方法，它返回对的引用类对象的类对象。<br>
+
+以下代码显示如何获取对Test类的Class对象的引用：<br>
+
+class Test{<br>
+  
+}<br>
+public class Main {<br>
+  public static void main(String[] args) {<br>
+    Test   testRef = new Test();<br>
+    Class testClass = testRef.getClass();<br>
+
+  }<br>
+}<br>
+forName()方法<br>
+Class类 forName() static方法返回对Class对象的引用。<br>
+
+它的重载方法是<br>
+
+Class<?>   forName(String  className)<br>
+Class<?>   forName(String name,  boolean initialize, ClassLoader loader)<br>
+forName()方法的第一个版本接受完全该类的限定名作为参数，并加载该类，并返回其对象引用<br>
+
+如果类已经加载，它将返回对Class对象的引用。<br>
+
+第二版本方法可以控制是否初始化或不初始化该类在加载时。 我们也可以传入类加载器。<br>
+
+要加载名为com.w3cschool..Test的类:<br>
+
+Class testClass  = Class.forName("com.w3cschool..Test");<br>
+下面的代码显示了如何加载一个类并获取对它的Class对象的引用。<br>
+
+class MyClass {<br>
+  static {
+    System.out.println("Loading class MyClass...");<br>
+  }
+}<br>
+<br>
+public class Main {<br>
+  public static void main(String[] args) {<br>
+    try {
+      String className = "MyClass";<br>
+      boolean initialize = false;<br>
+
+      ClassLoader cLoader = Main.class.getClassLoader();<br>
+      Class c = Class.forName(className, initialize, cLoader);<br>
+      className = "MyClass";<br>
+      System.out.println("about to load");<br>
+      // Will load and initialize the class<br>
+      c = Class.forName(className);<br>
+    } catch (ClassNotFoundException e) {<br>
+      System.out.println(e.getMessage());<br>
+    }<br>
+  }<br>
+}<br>
+上面的代码生成以下结果。<br>
+
+
      <br>
      <center>
      	<img alt="" src="${pageContext.request.contextPath }/images/templet/08-34-26-0.gif">

@@ -20,7 +20,7 @@
             <h1 class="topbar-logo none"><a href="#" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
                  <li><a class="on" href="${pageContext.request.contextPath}/Admin/main.jsp">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
+                <li><a href="${pageContext.request.contextPath }" target="_blank">网站首页</a></li>
             </ul>
         </div>
        
@@ -82,7 +82,8 @@
             <div class="result-content">
                 <div class="short-wrap">
                     <a href="${pageContext.request.contextPath}/Admin/CreatArticle.jsp"><i class="icon-font">&#xe001;</i>新增作品</a>        
-                    <a href="#"><i class="icon-font">&#xe01e;</i>作品评论</a>
+                    <a href="${pageContext.request.contextPath}/get.ly"><i class="icon-font">&#xe01e;</i>作品留言/评论</a>
+            
                 </div>
             </div>
         </div>
@@ -131,7 +132,7 @@
             <div class="result-content">
                 <ul class="sys-info-list">
                     <li>
-                        <label class="res-lab">更多信息，请访问：</label><span class="res-info"><a href="http://www.baidu.com/" target="_blank">说明</a></span>
+                        <label class="res-lab">更多信息，请访问：</label><span class="res-info"><a href="http://www.baidu.com/" target="_blank">百度</a></span>
                     </li>
                 </ul>
             </div>
