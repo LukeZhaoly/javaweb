@@ -47,19 +47,19 @@ $(document).ready(function(){
 	    form.submit();//通过js提交表单 执行action  
 	}
 	
-	function checkData1() {
+	function check() {
 		
 		//1.获取用户名， 密码   确认密码
-	    var uname =  document.getElementById("uname");
-	    var pwd =  document.getElementById("pwd");
+	    var u_name =  document.getElementById("u_name");
+	    var u_pwd =  document.getElementById("u_pwd");
 	    var phone =  document.getElementById("ph");
 	    
 	    //2.判断输入的内容不能为空
-	    if(uname.value==""){
+	    if(u_name.value==""){
 	    	alert("请输入用户名");
 	    	return;
 	    }
-	    if(pwd.value==""){
+	    if(u_pwd.value==""){
 	    	alert("请输入密码");
 	    	return;
 	    }
@@ -67,7 +67,7 @@ $(document).ready(function(){
 	    	alert("请输入电话");
 	    	return;
 	    }
-	    var form =  document.getElementById("reg_form");
+	    var form =  document.getElementById("r_form");
 	    form.submit();//通过js提交表单 执行action  
 	}
 </script>
@@ -83,7 +83,7 @@ $(document).ready(function(){
     <li>注册</li>
   </ul>
   <div class="tab_box"> 
-    <!-- 学生登录开始 -->
+    <!-- 登录开始 -->
     <div>
       <div class="stu_error_box"></div>
       <form action="${pageContext.request.contextPath }/login.action" method="post" class="stu_login_error" id="reg_form">
@@ -113,15 +113,15 @@ $(document).ready(function(){
    <!-- 注册开始-->
     <div class="hide">
      <div class="tea_error_box"></div>
-      <form action="${pageContext.request.contextPath }/add.action" method="post" class="tea_login_error" id="reg_form">
+      <form action="${pageContext.request.contextPath }/add.action" method="post" class="tea_login_error" id="r_form">
         <div id="username">
           <label>姓&nbsp;&nbsp;&nbsp;名：</label>
-          <input type="text" id="uname" name="username" />
+          <input type="text" id="u_name" name="username" />
           <!--ajaxurl="demo/valid.jsp"--> 
         </div>
         <div id="password">
           <label>密&nbsp;&nbsp;&nbsp;码：</label>
-          <input type="password" id="pwd" name="password" />
+          <input type="password" id="u_pwd" name="password" />
         </div>
         
         <div id="phone">
@@ -130,7 +130,7 @@ $(document).ready(function(){
         </div>
         
         <div id="regist">
-          <button type="button" onclick="checkData1()">注册</button>
+          <button type="button" onclick="check()">注册</button>
         </div>
       </form>
     </div>
